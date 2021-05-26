@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +38,13 @@ public class ChatController {
 	
 	@Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
+	
+	@GetMapping("/chat")
+	public String getChat(Model model){
+		Usuario usuario = usuarioService.usuarioLogado();
+		model.addAttribute("usuario", usuario);
+		return "chat";
+	}
     
     @MessageMapping("/chat/{to}")
     public void sendMessage(@DestinationVariable String to, Mensagem message) {
@@ -47,7 +55,6 @@ public class ChatController {
     public void saveMensagem(@RequestBody Mensagem mensagem){
     	chatService.salvarMensagem(mensagem);
     }
-
 
     @GetMapping("/registration")
     public String getLogin() {
