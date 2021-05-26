@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.lang.NonNull;
 
@@ -22,6 +23,17 @@ public class Report {
 	
 	@NonNull
 	private String texto;
+	
+	@NonNull
+    private String img;
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 
 	public Long getId() {
 		return id;
@@ -54,6 +66,12 @@ public class Report {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	
+	@Transient
+    public String getImgReport() {
+        if (img == null || id == null) return null;
+        return "/usuario-fotos/report/"+ id + "/" + img;
+    }
 
 	@Override
 	public String toString() {

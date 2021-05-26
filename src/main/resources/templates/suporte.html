@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>suporte</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.min.css}">
+  <link rel="stylesheet" th:href="@{/css/suporte.css}">
+</head>
+
+<body>
+  <header>
+    <a href="#" class="brand">Ganet</a>
+    <div class="menu-btn">
+      <i id="open" style="display:block;" class="fas fa-bars"></i>
+      <i id="close" style="display:none;" class="fas fa-times"></i>
+    </div>
+    <div class="navigation">
+      <div class="navigation-items">
+        <a class="b1" href="#">O que é</a>
+        <a class="b1" href="#">Sobre nós</a>
+        <a class="b1" href="#">Cadastro</a>
+        <a class="logon" href="#">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="home">
+    <video class="video" th:src="@{/img/1.mp4}" autoplay muted loop></video>
+    <form class="suporte" th:object="${report}" th:action="@{/report}" method="POST" enctype="multipart/form-data">
+      <div class="texto">
+        <h1>Suporte <br> <span>
+            <p> Caso encontre erros no nosso sistema, sinta-se a vontade para reportar! </p>
+          </span></h1>
+        <h4> Insira seu email</h4>
+        <input class="form" th:field="*{email}" type="email" placeholder="Email">
+        <h4> Assunto</h4>
+        <select  th:field="*{assunto}" placeholder="Selecione o assunto" class="form">
+          <option class="option1" value="">Selecione o assunto</option>
+          <option class="option" value="">Bugs/Erros</option>
+          <option class="option" value="">Sugestões</option>
+          <option class="option" value="">Contato Administrativo</option>
+        </select>
+        <h4>Espaço para imagens</h4>
+        <label class="labelimg" for="imgerro">Enviar</label>
+        <input id="imgerro" type="file" name="image" accept="image/png, image/jpeg">
+      </div>
+      <h4>Explique o erro</h4>
+      <div class="textare">
+        <textarea placeholder="Descreva um pouco o erro..." id="texta" th:field="*{texto}"></textarea>
+      </div>
+
+      <button type="submit">Enviar erro</button>
+      
+    </form>
+
+  </section>
+  <script type="text/javascript">
+    const menuBtn = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".navigation");
+
+
+    menuBtn.addEventListener("click", () => {
+      var cLose = document.getElementById("close")
+      var oPen = document.getElementById("open")
+
+
+      menuBtn.classList.toggle("active");
+      navigation.classList.toggle("active");
+
+      var estilo = oPen.getAttribute("style");
+
+      if (estilo == "display:block;") {
+        cLose.setAttribute("style", "display:block;")
+        oPen.setAttribute("style", "display:none; ")
+        console.log("aiaiaia")
+      } else {
+        cLose.setAttribute("style", "display:none;")
+        oPen.setAttribute("style", "display:block;")
+        console.log(estilo)
+      }
+    });
+
+  </script>
+</body>
+
+</html>

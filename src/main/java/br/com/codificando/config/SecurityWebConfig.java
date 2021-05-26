@@ -27,7 +27,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/cadastro").permitAll()
 		.antMatchers("/cadastrar").permitAll()
 		.antMatchers("/login-error").permitAll()
-		
+		.antMatchers("/suporte").permitAll()
 		//Habilitar statics
 		.antMatchers("/bootstrap-4.5.2/**").permitAll()
 		.antMatchers("/css/**").permitAll()
@@ -39,8 +39,8 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter{
 		
 		//Outras autenticacpes
 		.antMatchers(HttpMethod.POST, "/report").permitAll()
-		.antMatchers("/report").hasAnyRole("ADMIN")
-		.antMatchers("/report/**").hasAnyRole("ADMIN")
+		.antMatchers("/admin").hasAnyRole("ADMIN")
+		.antMatchers("/admin/**").hasAnyRole("ADMIN")
 		.anyRequest().hasAnyRole("USER")
 		.and()
 		//Definir página de login
