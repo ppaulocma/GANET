@@ -1,0 +1,488 @@
+html,
+body {
+    height: 100%;
+}
+
+.eLeft {
+    height: 100%;
+    width: 30%;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    background-color: #151826;
+}
+
+.eRight {
+    width: 70%;
+    height: 100%;
+    background-color: #151826;
+}
+
+.editP {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding: 10px;
+    color: #3DD9AD;
+    gap: 3px;
+}
+
+.editF {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding: 10px;
+    color: #3DD9AD;
+    gap: 4px;
+}
+
+.editF img {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border: 1px solid gray;
+    border-radius: 100%;
+}
+
+.editF input {
+    background: none;
+    color: #fff;
+    height: 30px;
+    font-size: 10px;
+    padding-left: 20px;
+    border: 1px solid gray;
+}
+
+.editC {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding: 10px;
+    color: #3DD9AD;
+    gap: 4px;
+}
+
+.editC img {
+    margin: auto;
+    width: 100%;
+    height: 200px;
+    border: 1px solid gray;
+}
+
+.editS input {
+    background: none;
+    color: #fff;
+    height: 30px;
+    font-size: 10px;
+    padding-left: 20px;
+    border: 1px solid gray;
+}
+
+.editS {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding: 10px;
+    color: #3DD9AD;
+    gap: 5px;
+}
+
+.editS img {
+    margin: auto;
+    width: 100%;
+    height: 200px;
+    border: 1px solid gray;
+}
+
+.editS input {
+    background: none;
+    color: #fff;
+    height: 30px;
+    font-size: 10px;
+    padding-left: 20px;
+    border: 1px solid gray;
+}
+
+.editS input::placeholder {
+    color: #fff;
+}
+
+.eRight form input {
+    background: none;
+    color: #fff;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 20px;
+    border: 1px solid gray;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.btnF {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btnF span {
+    height: 10px;
+}
+
+.spans {
+    width: 70%;
+}
+
+.btnF button {
+    margin-top: 10px;
+    width: 120px;
+    height: 35px;
+    font-size: 20;
+    font-weight: bold;
+    border: solid 2px #3DD9AD;
+    background: none;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btnF button:hover {
+    background: #3DD9AD;
+}
+
+.btnF button:focus {
+    outline: none;
+}
+
+#botao {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#botao button {
+    text-align: left;
+    font-size: 19px;
+    padding-left: 10px;
+    padding-right: 20px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-left: none;
+    border-right: none;
+    height: 70px;
+    background-color: #151826;
+    color: #3DD9AD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+}
+
+#botao button:hover {
+    background-color: #6D7BA6;
+}
+
+#botao button:focus {
+    outline: none;
+}
+
+#botao button i {
+    height: 5px;
+    width: 100px;
+    right: 50px;
+}
+
+.edit {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+}
+
+/* NAVBAR */
+
+html, body {
+    height: 100%;
+}
+
+.navbarT {
+    display: flex;
+    justify-content: space-between;
+    background-color: #151826;
+    border-bottom: solid 2px black;
+    height: 6%;
+}
+
+.navcentro {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Timeline */
+
+.timeline {
+    height: 94%;
+    width: 100%;
+    background-color: #151826;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.a {
+    color: white;
+    font-size: 30px;
+}
+
+.a i {
+    padding-right: 4px;
+}
+
+/* Div esquerda */
+
+.tleft {
+    padding: 10px;
+    width: 300px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #151826;
+}
+
+/* butÃµes */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    height: 45%;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.btm {
+    background-color: none;
+    width: 100%;
+    height: 3rem;
+    color: aliceblue;
+    background: none;
+    text-align: left;
+    border: none;
+    padding-right: 15px;
+    align-items: center;
+}
+
+.btm>i {
+    padding: 15px;
+}
+
+.btm:hover {
+    background-color: transparent;
+    color: #3DD9AD;
+    border-color: gray;
+}
+
+button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.miperfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 50%;
+}
+
+.btm2 {
+    width: 100%;
+    height: 55px;
+    color: aliceblue;
+    background-color: #3DD9AD;
+    border-radius: 20px;
+    border: solid 1px;
+    margin-bottom: 10px;
+    display: flex;
+    border-color: gray;
+    align-items: center;
+    text-align: center;
+}
+
+.btm2:hover {
+    background-color: transparent;
+    color: #3DD9AD;
+    border-color: gray;
+}
+
+.mini {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 15px;
+    border-radius: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.mini:hover {
+    background-color: #2c9b7c62;
+}
+
+.mini div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.mini-nome {
+    font-weight: bold;
+}
+
+.mini-login {
+    color: gray;
+}
+
+.mini i {
+    border: none;
+    margin-left: 35px;
+    color: white;
+    background: none;
+    flex: 1;
+}
+
+.mini-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.mini-img img {
+    width: 50px;
+    height: auto;
+    margin: auto;
+}
+
+.logout{
+    display: none;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 130px;
+    color: #3DD9AD;
+    margin-bottom: 8px;
+}
+
+.logout a button{
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+}
+
+.mini button{
+    background: none;
+    border: none;
+}
+
+
+/* Div meio */
+
+.tmid {
+    background-color: #151826;
+    width: 1020px;
+    height: 100%;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: rgba(224, 224, 224, 0.295);
+}
+
+::-webkit-scrollbar-track-piece {
+    background: rgba(75, 74, 74, 0.247);
+}
+
+.menu-mobile {
+    display: none;
+}
+
+@media (max-width: 1280px) {
+    .tleft {
+        width: 90px;
+    }
+
+    .mini {
+        padding: 2%;
+    }
+
+    .mini-img {
+        width: 40px;
+        height: 40px;   
+    }
+    
+    .mini > i ,.mini-nome, .mini-login,.sumir {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .tleft, .navbarT {
+        display: none;
+    }
+
+    .menu-mobile {
+        width: 100%;
+        height: 8%;
+        background-color: #151826;
+        color: #151826;
+        justify-content: space-between;
+        display: flex;
+        border-top: solid 1px #6D7BA6;
+    }
+
+    .timeline {
+        height: 92%;
+    }
+
+    .btm:hover {
+        background-color: transparent;
+        color: #3DD9AD;
+        border-color: gray;
+    }
+}

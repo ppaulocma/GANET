@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset=" UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portifólios</title>
+
+
+    <!--CSS-->
+    <link rel="stylesheet" th:href="@{/bootstrap-4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+
+<body>
+    <!--MENU-->
+    <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color: #772CE8">
+        <a class="navbar-brand" th:href="@{/}">Ganet</a>
+        <!--BOTÃO MENU-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color:#120253">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--ITENS DO MENU-->
+        <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active " th:href="@{/}">Home</a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-usuarios">
+        <div class="form-titulo">
+            <h4>Usuários</h4>
+        </div>
+        <div class="form-novo">
+            <a th:href="@{/usuario/add}" class="btn btn-success" onclick="window.location.href='./add'">
+                <i class="fa fa-user-plus"> </i> Novo
+            </a>
+        </div>
+        <div class="form-table">
+            <table class="table table-striped table-bordered table-hover rounded-10">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Usuário</th>
+                        <th>Cpf</th>
+                        <th colspan="4">Ativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}"></td>
+                        <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.login}"></td>
+                        <td th:text="${usuario.cpf}"></td>
+                        <td th:text="${usuario.ativo}"></td>
+                        <td class="tabela-controle">
+                            <a class="a-controle-eye"
+                                th:href="@{'/usuario/view/' + ${usuario.id} + '/'+${false} }">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                        <td class="tabela-controle">
+                            <a class="a-controle-edit" th:href="@{'/usuario/edit/' + ${usuario.id}}">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>
+                        </td>
+
+                        <td class="tabela-controle-delete">
+
+                            <a class="a-controle-delete" th:onclick="|showModalDeletar(${usuario.id})|">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <div class="modal fade" id="modalDeletar">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Atenção</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Você realmente deseja deletar o Projeto?
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <input type="text" id="id_deletar" hidden>
+                        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">
+                            <i class="fa fa-ban"></i> Voltar
+                        </button>
+
+                        <button type="button" class="btn btn-danger btn-modal-footer" data-dismiss="modal"
+                            th:onclick="deletar('usuario')">
+                            <i class="fa fa-trash"> </i> Deletar
+                        </button>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+            <!--CONTATO-->
+            <div class="div-contato">
+                <div class="container">
+                    <label class="lbl-titulo">Contato</label>
+                    <label class="lbl-dado">portifolio@gmail.com</label>
+                    <label class="lbl-dado">(48) 991083212</label>
+                </div>
+            </div>
+
+            <!--RODAPÉ-->
+            <footer>
+                <label class="lbl-footer">
+                    <i class="far fa-copyright" aria-hidden="true"></i> Todos os direitos reservados
+                </label>
+            </footer>
+
+
+
+
+
+            <!--JAVASCRIPT-->
+            <script th:src="@{/js/script.js}"></script>
+            <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+            <script th:src="@{/bootstrap-4.5.2/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

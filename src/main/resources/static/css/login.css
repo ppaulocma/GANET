@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: rgb(0, 0, 0); /* rgba(0, 0, 0, 0.938)  rgba(0, 0, 0, 0.973); */
+    height: auto;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .navbarT {
+    display: flex;
+    justify-content: space-between;
+    background-color: #151826;
+    border-bottom: solid 2px black;
+    height: 6%;
+  }
+  
+  .navcentro {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+  .container .row {
+    width: 100%;
+  }
+  .container form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+
+    background-color:#151826  ;
+  }
+  .container form 
+    #logininvalid
+    ,#nomeinvalid
+    ,#senhainvalid
+    ,#datainvalid { 
+      color: #c73a3a;
+      text-align: left;
+      display: none;
+  }
+  .container form label {
+    color: #FFFFFF;
+  }
+  .container form h3 {
+    color: #3DD9AD;
+  }
+  .container form a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+  .container form a:hover {
+    text-decoration: underline;
+    color: #3DD9AD;
+  }
+  .container form .form-group {
+    text-align: left;
+  }
+  .container form .btns {
+    margin-top: 10px;
+  }
+  .container form .btns button:nth-child(1) {
+    background-color: #3DD9AD;
+    color: #FFFFFF;
+    transition: 0.5s;
+    border: 1px solid #151826;
+  }
+  .container form .btns button:nth-child(2) {
+    background-color:  151826;
+    color: #FFFFFF;
+    transition: 0.5s;
+    border: 1px solid #151826;
+  }
+  .container form .btns button:nth-child(1):hover {
+    background-color: #FFFFFF;
+    color: #151826;
+  }
+  .container form .btns button:nth-child(2):hover {
+    background-color: #FFFFFF;
+    color: #151826;
+  }
+  .container form .btns button {
+    border-radius: 15px;
+    width: 90px;
+  }
+  .container form input {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #151826;
+  }
+  .container form select:hover {
+    cursor: pointer;
+  }
+  .container form #selects {
+    display: flex;
+    gap: 5px;
+  }
+  
+  @media screen and (max-width: 400px) {
+    .cadastro form {
+      width: 90%;
+    }
+  
+    form {
+      margin-left: 20px;
+    }
+  }

@@ -1,0 +1,284 @@
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ganet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js}"></script>
+    <!--    libs for stomp and sockjs-->
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+    <!--    end libs for stomp and sockjs-->
+    <link rel="stylesheet" th:href="@{/bootstrap-4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.min.css}">
+    <link th:href="@{/css/chat.css}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbarT">
+        <div class="navcentro">
+            <div id="logo" class="a">
+                <i id="i" class="fas fa-dice-d20"></i>Ganet
+            </div>
+        </div>
+    </nav>
+
+    <div class="timeline">
+        <!-- DIV 1 -->
+        <div class="tleft">
+            <div class="menu">
+                <a th:href="@{/time-line}"><button class="btm"><i class="fas fa-stream"></i><span class="sumir"> Home </span></button></a>
+                <a th:href="@{/chat}"><button class="btm"><i class="fas fa-comment"></i><span class="sumir"> Chat </span></button></a>
+                <a th:href="@{|/perfil/${usuario.login}|}"><button class="btm"><i class="fas fa-user"></i><span class="sumir"> Perfil </span></button></a>
+                <a th:href="@{/perfil/editar}"><button class="btm"><i class="fas fa-cog"></i><span class="sumir"> Configurações </span></button></a>
+            </div>
+
+            <div class="miperfil" th:href="@{|perfil/${usuario.login}|}">
+                <div class="logout" id="logout" style="display: none;">
+                    <a th:href="@{/logout}"><button><i class="fas fa-sign-out-alt"></i>Logout</button></a>
+                </div>
+                <div class="mini">
+                    <div class="mini-img">
+                        <img th:src="${usuario.foto}">
+                    </div>
+                    <div>
+                        <span th:text="${usuario.nome}" class="mini-nome"></span>
+                        <span th:text="${usuario.login}" class="mini-login"></span>
+                    </div>
+                    <button onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+            </div>
+
+        </div>
+        <!-- Div 2 -->
+        <div class="tmid">
+            <div id="modal01" class="modal">
+                <div class="modal-content animate-zoom">
+
+                    <div class="topo-pesq">
+                        <button class="botao-fechar" onclick="document.getElementById('modal01').style.display='none'">
+                            <i class="fas fa-times"></i></button><span>Nova mensagem</span>
+                    </div>
+
+                    <form autocomplete="off">
+                        <div class="autocomplete">
+                            <input id="myInput" type="text" name="myCountry" placeholder="Pesquisar usuario...">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <div class="people-list" id="people-list">
+                <div class="btns-chat">
+                    Chats
+                    <button onclick="document.getElementById('modal01').style.display='block'"><i
+                            class="fas fa-comment-medical"></i></button>
+                </div>
+                <div class="list" id="usersList">
+
+                </div>
+            </div>
+
+            <div class="chat">
+                <div id="chat-zero">
+                    <span class="nao-sel">Você não tem uma mensagem selecionada</span>
+                    <span class="nova-men">Escolha uma mensagem entre as existentes ou inicie uma nova.</span>
+                    <button class="btn-nova" onclick="document.getElementById('modal01').style.display='block'">Nova
+                        Mensagem</button>
+                </div>
+                <div id="chat-div">
+                    <div class="chat-header clearfix">
+                        <div id="img-user"></div>
+                        <div class="chat-about">
+                            <div class="chat-with" id="selectedUserId"></div>
+                        </div>
+                    </div>
+
+                    <div class="chat-history">
+                        <ul>
+
+                        </ul>
+                    </div>
+
+                    <div class="chat-message clearfix">
+                        <textarea id="message-to-send" name="message-to-send" placeholder="Digite uma mensagem"
+                            rows="1"></textarea>
+                        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--MENU MOBILE-->
+    <div class="menu-mobile">
+        <a th:href="@{/time-line}"><button class="btm"><i class="fas fa-stream"></i></button></a>
+        <a th:href="@{/chat}"><button class="btm"><i class="fas fa-comment"></i></button></a>
+        <a th:href="@{|/perfil/${usuario.login}|}"><button class="btm"><i class="fas fa-user"></i></button></a>
+        <a th:href="@{/perfil/editar}"><button class="btm"><i class="fas fa-cog"></i></button></a>
+    </div>
+
+
+    <script id="message-template" type="text/x-handlebars-template">
+        <li class="clearfix">
+            <div class="message other-message float-right">
+            {{messageOutput}}
+            <span class="message-data-time">{{time}}</span>
+            </div>
+        </li>
+    </script>
+
+    <script id="message-divisao" type="text/x-handlebars-template">
+        <div class="data">{{time}}</div>
+    </script>
+
+    <script id="message-response-template" type="text/x-handlebars-template">
+        <li>
+            <div class="message my-message">
+                {{response}}
+                <span class="message-data-time" >{{time}}</span>
+            </div>
+        </li>
+    </script>
+
+    <script th:src="@{js/custom.js}"></script>
+    <script th:src="@{js/chat.js}"></script>
+    <script>
+
+
+        function autocomplete(inp, arr) {
+
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var login_usuario = document.getElementById("login-usuario").innerText
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) {
+                    return false;
+                }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    let foto;
+                    var nome = arr[i].login
+                    if (arr[i].foto_perfil == null) {
+                        foto = "/usuario-fotos/default.png";
+                    } else {
+                        foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto_perfil;
+                    }
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (nome.substr(0, val.length).toUpperCase() == val.toUpperCase() && nome != login_usuario) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        b.setAttribute("class", "infos");
+                        /*make the matching letters bold:*/
+                        b.innerHTML += "<img src=" + foto + " class='img'  alt='avatar' />"
+                        b.innerHTML += "<div class='nomes'><div class='login'> <strong class='auto'>" + nome.substr(0, val.length) + "</strong>" + nome.substr(val.length) + "</div><span class='nome'>" + arr[i].nome + "</span>" + "</div>"
+
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + nome + "'>";
+                        b.innerHTML += "<input type='hidden' id='input' value='" + arr[i].nome + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            var input = document.getElementById("input").value
+                            selectUser(inp.value, foto, input);
+                            document.getElementById('modal01').setAttribute("style", "display: none");
+                            inp.value = "";
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+
+        $.get(url + "/todos", function (response) {
+            var users = response
+            autocomplete(document.getElementById("myInput"), users);
+        });
+
+
+    </script>
+
+</body>
+
+</html>

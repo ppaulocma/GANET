@@ -1,0 +1,756 @@
+html, body {
+    height: 100%;
+}
+
+.navbarT {
+    display: flex;
+    justify-content: space-between;
+    background-color: #151826;
+    border-bottom: solid 2px black;
+    height: 6%;
+}
+
+.navcentro {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.principal {
+    height: 94%;
+    background-color: #151826;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.a {
+    color: white;
+    font-size: 30px;
+}
+
+.a i {
+    padding-right: 4px;
+}
+
+/* Div da esquerda*/
+
+.pleft {
+    padding: 10px;
+    width: 300px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #151826;
+}
+
+/* butões */
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    height: 45%;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.btm {
+    background-color: none;
+    width: 100%;
+    height: 3rem;
+    color: aliceblue;
+    background: none;
+    text-align: left;
+    border: none;
+    padding-right: 15px;
+    align-items: center;
+}
+
+.btm>i {
+    padding: 15px;
+}
+
+.btm:hover {
+    background-color: transparent;
+    color: #3DD9AD;
+    border-color: gray;
+}
+
+button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.miperfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 50%;
+}
+
+.btm2 {
+    width: 100%;
+    height: 55px;
+    color: aliceblue;
+    background-color: #3DD9AD;
+    border-radius: 20px;
+    border: solid 1px;
+    margin-bottom: 10px;
+    display: flex;
+    border-color: gray;
+    align-items: center;
+    text-align: center;
+}
+
+.btm2:hover {
+    background-color: transparent;
+    color: #3DD9AD;
+    border-color: gray;
+}
+
+/* Div do meio */
+
+.pmid {
+    background-color: #151826;
+    width: 670px;
+    height: 100%;
+    overflow: auto;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+}
+
+.pright {
+    width: 350px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mini {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 15px;
+    border-radius: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.mini:hover {
+    background-color: #2c9b7c62;
+}
+
+.mini div {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.mini-nome {
+    font-weight: bold;
+}
+
+.mini-login {
+    color: gray;
+}
+
+.mini i {
+    border: none;
+    margin-left: 35px;
+    color: white;
+    background: none;
+    flex: 1;
+}
+
+.mini-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.mini-img img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.logout{
+    display: none;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 130px;
+    color: #3DD9AD;
+    margin-bottom: 8px;
+}
+
+.logout a button{
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+}
+
+.mini button{
+    background: none;
+    border: none;
+}
+
+
+/* Navbar */
+
+/* Botão de sair */
+
+/* Dados do usuário*/
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-top: solid 1px #6D7BA6;
+    border-bottom: solid 1px #6D7BA6;
+    padding: 10px;
+    position: relative;
+}
+
+.sobre {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sobre div a:hover {
+    color: #3DD9AD
+}
+
+.dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.logins {
+    display: flex;
+    flex-direction: column;
+}
+
+.fotoC {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.fotoC img {
+    width: 100%;
+    height: auto;
+}
+
+.fotoP {
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: solid 4px #151826;
+    margin-top: -100px;
+    background-color: #151826;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.fotoP img {
+    width: 150px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.btns-infos {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.btn-editar {
+    transition: 0.3s;
+    border: none;
+    border: solid 2px #3DD9AD;
+    background: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 170px;
+}
+
+.btn-editar:hover{
+    background-color: #3DD9AD;
+}
+
+.btn-seguindo {
+    border: none;
+    transition: 0.3s;
+    background-color: #3DD9AD;
+    border-radius: 30px;
+    color: white;
+    font-size: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 170px;
+}
+
+.img-div {
+    display: flex;
+    justify-content: center;
+}
+
+.id {
+    color: gray;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background: rgba(224, 224, 224, 0.295);
+}
+
+::-webkit-scrollbar-track-piece {
+    background: rgba(75, 74, 74, 0.247);
+}
+
+.autocomplete input {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #151826;
+    border-radius: 20px;
+    border: solid 2px gray;
+    padding-left: 16px;
+    font-size: 20px;
+    color: white;
+}
+
+.pright form {
+    width: 95%;
+    height: fit-content;
+}
+
+.autocomplete {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-radius: 6px;
+    border-top: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    z-index: 99;
+    max-height: 250px;
+    overflow: auto;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.infos {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.infos:hover {
+    background-color: rgba(128, 128, 128, 0.13);
+}
+
+.autocomplete-active {
+    background-color: #2c9b7b !important;
+    color: #fff;
+}
+
+.img {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nomes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.postagem {
+    width: 100%;
+    height: 50%;
+    background-color: #151826;
+    border-bottom: solid 2px gray;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.textandimg {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.textusu {
+    width: 100%;
+    color: aliceblue;
+    font-size: 17px;
+    margin-top: -10px;
+    word-wrap: break-word;
+}
+
+.imgPreview {
+    width: 500px;
+    max-height: 300px;
+    overflow: hidden;
+    border: solid 1px gray;
+    border-radius: 13px;
+    display: none;
+    margin-right: 50px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.imgPreview img {
+    width: 500px;
+}
+
+.imgPreview button {
+    position: absolute;
+    border: none;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #151826;
+    color: white;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.imgpostagem {
+    width: 500px;
+    max-height: 300px;
+    overflow: hidden;
+    border: solid 1px gray;
+    border-radius: 13px;
+}
+
+.imgpostagem img {
+    width: 500px;
+}
+
+.nick {
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.text-muted {
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+.topsidepost {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.nick-texto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 90%;
+    align-items: stretch;
+}
+
+.ponto {
+    color: gray;
+}
+
+#imgpost {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#imgpost>img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.barra{
+    width: 100%;
+    border-top: solid 1px gray;
+    display: flex;
+    padding: 5px;
+}
+.like{
+    border: none;
+    background: none;
+    color: #fff;
+    border-radius: 30px;
+    border: solid 2px #3DD9AD;
+}
+
+.seguidores {
+    background-color: #151826;
+    width: 670px;
+    height: 100%;
+    overflow: auto;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.div-seguidores {
+    width: 100%;
+    height: fit-content;
+    border-bottom: 1px solid gray;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    cursor: pointer;
+}
+
+.foto-seguidor {
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.foto-seguidor img {
+    width: 65px;
+    height: auto;
+}
+
+.dados-seguidor {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    flex: 1;
+}
+
+.nome-seguidor {
+    font-weight: bold;
+}
+
+.login-seguidor {
+    color: gray;
+}
+
+.desc-seguidor{
+    margin-top: 4px;
+    word-wrap: break-word;
+    width: 350px;
+}
+
+.div-btn-seguidor {
+    width: 170px;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.btn-seguidor {
+    background-color: #3DD9AD;
+    transition: 0.3s;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 170px;
+}
+
+.topo{
+    width: 100%;
+    height: 70px;
+    border-bottom: solid 2px gray;
+    display: flex;
+   justify-content: space-between;
+}
+
+.btn-voltar{
+    height: 100%;
+    width: 60px;
+    border: none;
+    color: white;
+    background: none;
+    border-right: solid 1px gray;
+}
+
+.btns-seg{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btns-seg button{
+    width: 50%;
+    height: 100%;
+    border: none;
+    color: white;
+    background: none;
+}
+
+.menu-mobile, .btns-infosMob{
+    display: none;
+}
+
+@media (max-width: 1280px) {
+    .pleft {
+        width: 90px;
+    }
+
+    .mini {
+        padding: 2%;
+    }
+
+    .mini-img {
+        width: 40px;
+        height: 40px;   
+    }
+
+    .mini > i ,.mini-nome, .mini-login,.sumir {
+        display: none;
+    }
+
+    
+}
+
+@media (max-width: 1095px) {
+    .pright {
+        width: 290px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .pright {
+        display: none;
+    }
+
+    .pleft {
+        display: block;
+    }
+
+    .fotoC {
+        height: auto;
+    }
+
+    .fotoP {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 500px) {
+    .pleft, .navbarT{
+        display: none;
+    }
+
+    .menu-mobile {
+        width: 100%;
+        height: 8%;
+        background-color: #151826;
+        color: #151826;
+        justify-content: space-between;
+        display: flex;
+        flex-wrap: wrap;
+        border-top: solid 1px #6D7BA6;
+    }
+
+    .btm > i {
+        width: 100%;
+        height: 100%;
+        font-size: 22px;
+    }
+
+    .btm:hover {
+        background-color: transparent;
+        color: #3DD9AD;
+        border-color: gray;
+    }
+
+    .principal {
+        height: 92%;
+    }
+
+    .pmid {
+        border-right: none;
+        border-left: none;
+    }
+
+    .fotoC {
+        height: auto;
+    }
+
+    .fotoP {
+        width: 100px;
+        height: 100px;
+        margin-top: -70px;
+    }
+}
