@@ -40,7 +40,7 @@
                 </div>
                 <div class="mini">
                     <div class="mini-img">
-                        <img th:src="${usuario.foto}">
+                        <a th:href="@{|/perfil/${usuario.login}|}"><img th:src="${usuario.foto}"></a>
                     </div>
                     <div>
                         <span th:text="${usuario.nome}" class="mini-nome"></span>
