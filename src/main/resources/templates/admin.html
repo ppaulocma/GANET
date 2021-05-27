@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adm</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/fontawesome-5.14.0/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+
+</head>
+
+<body>
+
+    <div class="home">
+        <div class="left">
+            <h1>Administrativo</h1>
+            <div class="Acesso">
+                <a>Mensagens</a>
+                <a>Sistema</a>
+                <a>Configurações</a>
+            </div>
+
+            <div class="logout">
+                <button> Logon <i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="itens">
+                <div class="onename">
+                    <h1> Reports</h1>
+                </div>
+                <form class="two" th:action="@{/admin}">
+                    <select class="slc" name="assunto">
+                        <option style="display: none;" value="">Selecione o assunto</option>
+                        <option class="opt" value="">Todos</option>
+                        <option class="opt" value="Bugs/Erros">Bugs/Erros</option>
+                        <option class="opt" value="Sugestões">Sugestões</option>
+                        <option class="opt" value="Contato Administrativo">Contato Administrativo</option>
+                        <option class="opt" value="Outros">Outros</option>
+                    </select>
+                    <button type="submit">Verificar</button>
+                </form>
+            </div>
+            <section class="recebimento">
+
+                <span class="report" th:each="report : ${reports}">
+
+                    <div class="apparence">
+                        <div class="assunto">
+                            <span th:text="${report.assunto}"></span>
+                        </div>
+                        <div class="email">
+                            <span th:text="${report.email}"></span>
+                        </div>
+                        <div class="data">
+                            <span th:text="${report.data}"></span>
+                        </div>
+                        <div class="seta">
+                            <div class="down"> ↓ </div>
+                            <div class="up"> ↑ </div>
+                        </div>
+                    </div>
+
+                    <div class="sucesso">
+                        <div class="textousuario">
+                            <h1>Texto recebido</h1>
+                            <span th:text="${report.texto}" class="text"></span>
+
+                            <div class="imagem">
+                                Foto recebida
+                                <img th:src="${report.imgReport}">
+                            </div>
+                        </div>
+                    </div>
+
+                </span>
+            </section>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+    <script type="text/javascript">
+        const reports = document.querySelectorAll(".report")
+        const dale = document.querySelectorAll(".dale")
+
+
+        reports.forEach((report) => {
+            report.addEventListener("click", () => {
+
+                if (report.classList == "report") {
+                    report.classList.toggle("active");
+
+
+                } else if (report.classList == "report active") {
+                    report.classList.remove("active");
+
+
+                } else {
+                    console.log("erro")
+                }
+
+            })
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>

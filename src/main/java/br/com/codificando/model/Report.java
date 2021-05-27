@@ -25,7 +25,19 @@ public class Report {
 	private String texto;
 	
 	@NonNull
+	private String data;
+	
+	@NonNull
     private String img;
+	
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 
 	public String getImg() {
 		return img;

@@ -28,6 +28,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/cadastrar").permitAll()
 		.antMatchers("/login-error").permitAll()
 		.antMatchers("/suporte").permitAll()
+		.antMatchers("/sobre").permitAll()
 		//Habilitar statics
 		.antMatchers("/bootstrap-4.5.2/**").permitAll()
 		.antMatchers("/css/**").permitAll()
