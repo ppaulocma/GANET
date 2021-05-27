@@ -1,0 +1,349 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    
+}
+.home{
+    width: 100%;
+    height: 100vh;
+    background: #151826;
+    display: flex;
+    flex-direction: row;
+   
+    
+}
+
+.home .left{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+   justify-content: space-around;
+   border-right: solid 2px gray;
+   padding: 5px;
+
+}
+.home .left h1{
+   font-size: 20px;
+   color: #3DD9AD;
+    width: 100%;
+    text-align: center;
+}
+.home .left .Acesso{
+    margin-left: 2px;
+    margin-top: 20px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.home .left  .Acesso a{
+    display: flex;
+    width:100%;
+    height: 40px;
+    justify-content: center;
+    border: solid 2px #3DD9AD;
+    border-radius: 20px;
+    align-items: center;
+    color:#3DD9AD;
+    transform: 0.5em ease;
+}
+
+.home .left  .Acesso a:hover{
+    background: white;
+    transition: 0.5em ease;
+}
+.home .left .logout{
+    display: flex;
+   
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+.home .left .logout button{
+    border: solid 2px #3DD9AD;
+    width: 80%;
+    height: 60px;
+    color: #3DD9AD;
+    border-radius: 20px;
+    background: none;
+}
+.home .left .logout button:hover{
+    background: white;
+    transition: 0.5em ease;
+}
+
+
+
+
+.right{
+  
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.itens{
+    width: 100%;
+ 
+    height:14%;
+ 
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: solid 3px gray;
+
+}
+.right .itens .onename{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    height: 30%;
+    
+}.right .itens .onename h1{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: white;
+ 
+}.right .itens .two{
+    width: 100%;
+    
+    display: flex;
+    gap: 20px;
+}
+.right .itens .two .slc{
+    width: 300px;
+    display: flex;
+    background: #151826;
+    color: white;
+    text-align-last:center;
+    height: 30px;
+    border-radius: 20px;
+    margin-left: 10px;
+  
+ 
+}.right .itens .two .slc .opt{
+     display: flex;
+      text-align: center;
+    
+    
+}
+.right .itens .two button{
+    height: 30px;
+    width: 100px;
+   background: none;
+    border: 1px solid  rgb(6, 197, 6);
+    border-radius: 20px;
+     color: rgb(6, 197, 6);
+}
+.right .itens .two button:hover{
+    background: rgb(6, 197, 6);
+    color: white;
+}
+
+
+ .right .recebimento{
+   width: 100% ;
+  
+   height: 86%;
+   display: flex;
+   justify-content: start;
+   flex-direction: column;
+   overflow: hidden;
+}
+
+
+.right .recebimento  .report {
+    width: 100%;
+    height: 15%;
+    background-color:#3DD9AD ;
+    border: solid 2px white;
+    display: flex;
+    flex-direction: column;
+    color: black ;
+    
+   
+ }
+ .right .recebimento  .report .apparence  {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+   
+ }
+ .right .recebimento  .report.active{
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    
+   
+ }
+ .right .recebimento  .report.active .apparence{
+    width: 100%;
+    height: 15%;
+   
+
+    display: flex;
+    flex-direction: row;
+   
+ }
+
+
+
+.right .recebimento .report .apparence .assunto{
+display: flex;
+flex-direction: row;
+width: 30%;
+gap: 10px;
+
+align-items: center;
+justify-items: baseline;
+padding: 20px;
+font-size: 20px;
+
+}
+.right .recebimento  .report .apparence .email{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    gap: 10px;
+    
+    align-items: center;
+    justify-content: baseline;
+    
+    font-size: 20px;
+    
+    }
+    .right .recebimento .report .apparence .data{
+        display: flex;
+        flex-direction: row;
+        width: 30%;
+        gap: 10px;
+      
+        align-items: center;
+        justify-content: baseline;
+       
+        font-size: 20px;
+        
+        }
+        
+        .right .recebimento .report .apparence .seta{
+ 
+            display: flex;
+            flex-direction: row;
+            width: 10%;
+            gap: 10px;
+          
+            align-items: center;
+            justify-content: baseline;
+            text-align: center;
+            font-size: 40px;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+        .right .recebimento  .report .apparence .seta .up{
+        
+           display: none;
+        }
+        .right .recebimento  .report.active .apparence .seta{
+ 
+            display: flex;
+            justify-content: flex-start;
+            height: 77px;
+            align-items: center;
+            text-align: center;
+            justify-self: center;
+            cursor: pointer;
+        }
+        .right .recebimento  .report.active  .apparence .seta .down{
+            display: none;
+        }
+        .right .recebimento  .report.active .apparence .seta .up{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+
+
+        .right .recebimento  .report .sucesso{
+            display: none;
+        }
+        .right .recebimento  .report.active .sucesso{
+            display: flex;
+            width: 100%;
+            height: 85%;
+          
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        
+        .right .recebimento  .report.active .sucesso .textousuario{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            overflow: auto;
+            text-align: center;
+        }
+        .right .recebimento  .report.active .sucesso .textousuario .text{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+            color: aliceblue;
+            
+        }
+        .right .recebimento  .report.active .sucesso .textousuario  h1{
+          
+            color: aliceblue;
+            font-size: 30px;
+            
+        }
+        .right .recebimento  .report.active .sucesso .textousuario .imagem{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+           
+            color: aliceblue;
+            font-size: 20px;
+            padding: 20px;
+            gap: 10px;
+            
+        }
+        .right .recebimento  .report.active .sucesso .textousuario .imagem img{
+            display: flex;
+            width: 70%;
+            
+           
+            
+            
+        }
+
+
+
+
+      
+      
+      
+      
+        
