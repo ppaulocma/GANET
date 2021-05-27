@@ -1,1 +1,4 @@
 src/main/resources/static/* linguist-vendored
+ *.js linguist-language=Java
+ *.less linguist-language=JavaScript
+*.scss linguist-detectable=false
