@@ -38,7 +38,6 @@ public class ReportService {
 	 }
 	 
 	 public List<Report> listarPorAssunto(String assunto) {	
-		 System.out.println(assunto);
 		 if(assunto == null || assunto == "") {
 			 return reportReposytory.findAll();
 		 }else {
