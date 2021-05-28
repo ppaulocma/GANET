@@ -41,6 +41,9 @@ public class Usuario {
 	private String login;
 	
 	@NonNull
+	private String descricao;
+	
+	@NonNull
 	@Size(max=100)
 	private String senha;
 	
@@ -105,6 +108,15 @@ public class Usuario {
 		
 	}
 	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
 	public void setPermissoes(List<Permissao> permissoes) {
 		this.permissoes = permissoes;
 	}

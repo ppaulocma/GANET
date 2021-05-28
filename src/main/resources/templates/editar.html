@@ -111,6 +111,8 @@
 							required>
 						<label for="">Login</label>
 						<input class="input" type="text" placeholder="Login" th:field="${usuario.login}" required>
+						<label for="">Descrição</label>
+						<input class="input" type="text" maxlength="80" placeholder="Descrição" th:field="${usuario.descricao}" required>
 						<label for="">Data de nascimento </label>
 						<input class="input-data" type="date" th:field="${usuario.dtNascimento}">
 

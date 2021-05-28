@@ -10,7 +10,7 @@ function connectToChat(userName) {
     let user = userName;
     console.log("connecting to chat...")
     nome();
-    let socket = new SockJS(url + '/chat');
+    let socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log("connected to: " + frame);
@@ -18,7 +18,7 @@ function connectToChat(userName) {
             let data = JSON.parse(response.body);
             if (selectedUser === data.fromLogin) {
                 setTimeout(function() {
-                    $.get(url + "/setStatus/" + userName + "/" + data.fromLogin, function () {})
+                    $.get("/setStatus/" + userName + "/" + data.fromLogin, function () {})
                 } , 1000)
                 render(data.message, data.fromLogin)
             } else {
@@ -65,7 +65,7 @@ function sendMsg(from, text) {
 registration()
 function registration() {
 
-    $.get(url + "/registration", function (response) {
+    $.get("/registration", function (response) {
         username = response;
         connectToChat(username);
     })
@@ -86,9 +86,9 @@ function selectUser(userName, foto, nome) {
     $('.chat-history div').remove();
     $('.chat-history div').empty();
 
-    $.get(url + "/setStatus/" + username + "/" + userName, function () {})
+    $.get("/setStatus/" + username + "/" + userName, function () {})
 
-    $.get(url + "/getMensagens/" + username + "/" + userName, function (mensagem) {
+    $.get("/getMensagens/" + username + "/" + userName, function (mensagem) {
         tamanho = mensagem.length
         var dataAnterior = 0;
         var dataSeguinte = 0;
@@ -176,7 +176,7 @@ function selectUser(userName, foto, nome) {
 
 function fetchAll() {
     let users
-    $.get(url + "/findHistorico", function (response) {
+    $.get("/findHistorico", function (response) {
         users = response;
 
         let usersTemplateHTML = "";
@@ -203,7 +203,7 @@ function fetchAll() {
 }
 
 function getStatus(de, para) {
-    $.get(url + "/getStatus/" + de + "/" + para, function (qtdMsg) {
+    $.get("/getStatus/" + de + "/" + para, function (qtdMsg) {
         if (qtdMsg > 0) {
             let isNew = document.getElementById("newMessage_" + de) !== null;
             if (isNew) {
