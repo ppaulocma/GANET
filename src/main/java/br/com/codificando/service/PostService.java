@@ -36,16 +36,20 @@ public class PostService{
 			String dataFormatada = dataAtual.format(formatter);
 			post.setData(dataFormatada);
 			post.setUsuario(usuario);
-			try {
-				if(multipartFile.getOriginalFilename() != "" || multipartFile.getOriginalFilename() != null) {
+			
+				if(multipartFile.getOriginalFilename() != "") {
+					try {
+					System.out.println("nome original : "+multipartFile.getOriginalFilename());
 					post.setCheckImagem(true);
 					post.setImagem(multipartFile.getBytes());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}else {
+					System.out.println(multipartFile.getOriginalFilename());
 					post.setCheckImagem(false);
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			
 			usuario.setPost(post);
 	        postRepository.save(post);
 			return post;
