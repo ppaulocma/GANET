@@ -1,14 +1,17 @@
 package br.com.codificando.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import br.com.codificando.UploadFotos;
+
 import br.com.codificando.model.Post;
 import br.com.codificando.model.Usuario;
 import br.com.codificando.repository.PostRepository;
@@ -26,31 +29,35 @@ public class PostService{
 	@Autowired
 	UsuarioService usuarioService;
 
-	public Post save(Post post, MultipartFile multipartFile)throws IOException {
-		try {
+	public Post save(Post post, MultipartFile multipartFile) {
 			Usuario usuario = usuarioService.usuarioLogado();
 			LocalDateTime dataAtual = LocalDateTime.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 			String dataFormatada = dataAtual.format(formatter);
 			post.setData(dataFormatada);
 			post.setUsuario(usuario);
-			usuario.setPost(post);
-			postRepository.save(post);
-			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-	        String uploadDir = "usuario-fotos/post/" + post.getId();
-	        if (fileName == null || fileName == "") {
-				post.setImg(null);
-			}else{
-				post.setImg(fileName);
-				UploadFotos.saveFile(uploadDir, fileName, multipartFile);
+			try {
+				if(multipartFile.getOriginalFilename() != "") {
+					System.out.println(multipartFile.getOriginalFilename());
+					post.setCheckImagem(true);
+					post.setImagem(multipartFile.getBytes());
+				}else {
+					post.setCheckImagem(false);
+					post.setImagem(null);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
+			usuario.setPost(post);
 	        postRepository.save(post);
 			return post;
-			
-		} catch (Exception e) {
-			System.out.println("Erro ao Salvar: " + e.getMessage());
-			return null;
-		}
+	}
+	
+	public void getImagem(long id, HttpServletResponse response)throws IOException {
+		Post post = postRepository.findById(id);
+		response.setContentType("image/jpeg");
+		InputStream is = new ByteArrayInputStream(post.getImagem());
+		IOUtils.copy(is, response.getOutputStream());
 	}
 	
 	public List<Post> list() {

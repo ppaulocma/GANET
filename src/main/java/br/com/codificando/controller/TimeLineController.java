@@ -19,6 +19,7 @@ import br.com.codificando.service.PostService;
 import br.com.codificando.service.UsuarioService;
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class TimeLineController {
@@ -67,9 +68,13 @@ public class TimeLineController {
 	}
 
 	@RequestMapping(value = "/postar", method = RequestMethod.POST)
-	public String savePost(Post post, @RequestParam("image") MultipartFile multipartFile) throws IOException{
+	public String savePost(Post post,@RequestParam("image") MultipartFile multipartFile){
 		postService.save(post, multipartFile);
 		return "redirect:/time-line";
 	}
 	
+	@GetMapping("/getImagem/{id}")
+	public void getImagem(@PathVariable long id, HttpServletResponse response) throws IOException {
+		postService.getImagem(id, response);
+	}
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Transient;
 
 import org.springframework.lang.NonNull;
@@ -27,9 +28,10 @@ public class Report {
 	@NonNull
 	private String data;
 	
-	@NonNull
-    private String img;
+	@Lob
+    private byte[] imagem;
 	
+	private boolean checkImagem;
 
 	public String getData() {
 		return data;
@@ -39,12 +41,12 @@ public class Report {
 		this.data = data;
 	}
 
-	public String getImg() {
-		return img;
+	public byte[] getImagem() {
+		return imagem;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
 
 	public Long getId() {
@@ -79,10 +81,18 @@ public class Report {
 		this.texto = texto;
 	}
 	
+	public boolean isCheckImagem() {
+		return checkImagem;
+	}
+
+	public void setCheckImagem(boolean checkImagem) {
+		this.checkImagem = checkImagem;
+	}
+
 	@Transient
     public String getImgReport() {
-        if (img == null || id == null) return null;
-        return "/usuario-fotos/report/"+ id + "/" + img;
+        if (checkImagem == true) return "/report/imagem/"+id;
+        return null;
     }
 
 	@Override

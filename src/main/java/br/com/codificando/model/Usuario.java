@@ -1,13 +1,13 @@
 package br.com.codificando.model;
 
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,7 +15,6 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import org.springframework.lang.NonNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="usuario")
@@ -30,11 +29,15 @@ public class Usuario {
 	@Size(max=80)
 	private String nome;
 	
-	@Column(nullable = true, length = 64)
-    private String foto_perfil;
+	@Lob
+    private byte[] foto_perfil;
 	
-	@Column(nullable = true, length = 64)
-    private String foto_capa;
+	@Lob
+    private byte[] foto_capa;
+	
+	private boolean capaPadrao;
+	
+	private boolean fotoPadrao;
 	
 	@NonNull
 	@Size(max=60)
@@ -77,10 +80,10 @@ public class Usuario {
 		return permissoes;
 	}
 	
-	
 	public List<Usuario> getAmigos() {
 		return amigos;
 	}
+	
 	public void setAmigos(List<Usuario> amigos) {
 		this.amigos = amigos;
 		
@@ -162,22 +165,6 @@ public class Usuario {
 		this.dtNascimento = dtNascimento;
 	}
 	
-	public String getFoto_perfil() {
-		return foto_perfil;
-	}
-	
-	public void setFoto_perfil(String foto_perfil) {
-		this.foto_perfil = foto_perfil;
-	}
-
-	public String getFoto_capa() {
-		return foto_capa;
-	}
-
-	public void setFoto_capa(String foto_capa) {
-		this.foto_capa = foto_capa;
-	}
-	
 	public List<Mensagem> getMensagens() {
 		return mensagens;
 	}
@@ -190,19 +177,49 @@ public class Usuario {
 		this.mensagens.add(mensagen);
 		
 	}
+	
+	public byte[] getFoto_perfil() {
+		return foto_perfil;
+	}
 
+	public void setFoto_perfil(byte[] foto_perfil) {
+		this.foto_perfil = foto_perfil;
+	}
+
+	public byte[] getFoto_capa() {
+		return foto_capa;
+	}
+
+	public void setFoto_capa(byte[] foto_capa) {
+		this.foto_capa = foto_capa;
+	}
+
+	public boolean isCapaPadrao() {
+		return capaPadrao;
+	}
+
+	public void setCapaPadrao(boolean capaPadrao) {
+		this.capaPadrao = capaPadrao;
+	}
+
+	public boolean isFotoPadrao() {
+		return fotoPadrao;
+	}
+
+	public void setFotoPadrao(boolean fotoPadrao) {
+		this.fotoPadrao = fotoPadrao;
+	}
+	
 	@Transient
     public String getFoto() {
-        if (foto_perfil == null || id == null) return "/usuario-fotos/default.png";
-         
-        return "/usuario-fotos/foto/"+ id + "/" + foto_perfil;
+        if (fotoPadrao == true) return "/usuario-fotos/default.png";
+        return "/perfil/foto/"+id;
     }
 	
 	@Transient
     public String getCapa() {
-        if (foto_capa == null || id == null) return null;
-         
-        return "/usuario-fotos/capa/"+ id + "/" + foto_capa;
+		if (capaPadrao == true) return null;
+        return "/perfil/capa/"+id;
     }
 
 	@Override

@@ -11,5 +11,7 @@ import br.com.codificando.model.Report;
 public interface ReportRepository extends JpaRepository<Report, Long>{
 	
 	public List<Report> findByAssunto(String assunto);
+	
+	public Report findById(long id);
 
 }

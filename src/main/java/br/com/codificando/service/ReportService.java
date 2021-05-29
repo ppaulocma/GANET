@@ -1,14 +1,16 @@
 package br.com.codificando.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import br.com.codificando.UploadFotos;
 import br.com.codificando.model.Report;
 import br.com.codificando.repository.ReportRepository;
 
@@ -19,23 +21,30 @@ public class ReportService {
 	ReportRepository reportReposytory;
 	
 	 public void reportar(Report report, MultipartFile multipartFile)throws IOException {
-		 try {
 			 LocalDateTime dataAtual = LocalDateTime.now();
 			 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 			 String dataFormatada = dataAtual.format(formatter);
-	         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	         report.setData(dataFormatada);
-	         report.setImg(fileName);
+	         try {
+					if(multipartFile.getOriginalFilename() != "") {
+						report.setCheckImagem(true);
+						report.setImagem(multipartFile.getBytes());
+					}else {
+						report.setCheckImagem(false);
+						report.setImagem(null);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 	         reportReposytory.save(report);
-	         if(fileName != null || fileName != "") {
-	        	 String uploadDir = "usuario-fotos/report/" + report.getId();          
-	        	 UploadFotos.saveFile(uploadDir, fileName, multipartFile);
-	         }
-	         reportReposytory.save(report);
-	     } catch (Exception e) {
-	         System.out.println("Erro ao salvar: " + e.getMessage());
-	     }
 	 }
+	 
+	 public void getImagem(long id, HttpServletResponse response)throws IOException {
+			Report report = reportReposytory.findById(id);
+			response.setContentType("image/jpeg");
+			InputStream is = new ByteArrayInputStream(report.getImagem());
+			IOUtils.copy(is, response.getOutputStream());
+		}
 	 
 	 public List<Report> listarPorAssunto(String assunto) {	
 		 if(assunto == null || assunto == "") {

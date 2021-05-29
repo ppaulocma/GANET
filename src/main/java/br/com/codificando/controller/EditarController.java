@@ -33,14 +33,14 @@ public class EditarController {
 	@PostMapping("perfil/editar/foto")
 	public String editFoto(@RequestParam("image") MultipartFile multipartFile) throws IOException {
 		Usuario usuario  = usuarioService.usuarioLogado();
-		usuarioService.editFoto(multipartFile);
+		usuarioService.editFoto(usuario.getId(), multipartFile);
 		return "redirect:/perfil/"+usuario.getLogin();
 	}
 	
 	@PostMapping("perfil/editar/capa")
 	public String editCapa(@RequestParam("image") MultipartFile multipartFile) throws IOException {
 		Usuario usuario  = usuarioService.usuarioLogado();
-		usuarioService.editCapa(multipartFile);
+		usuarioService.editCapa(usuario.getId(), multipartFile);
 		return "redirect:/perfil/"+usuario.getLogin();
 	}
 	

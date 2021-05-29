@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
 import org.springframework.lang.NonNull;
 
 @Entity 
@@ -21,8 +22,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @NonNull
-    private String img;
+    @Lob
+    private byte[] imagem;
+    
+    private boolean checkImagem;
 
     @NonNull
     private String data;
@@ -101,19 +104,27 @@ public class Post {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-    
-    public String getImg() {
-		return img;
+
+	public byte[] getImagem() {
+		return imagem;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+	
+	public boolean isCheckImagem() {
+		return checkImagem;
+	}
+
+	public void setCheckImagem(boolean checkImagem) {
+		this.checkImagem = checkImagem;
 	}
 	
 	@Transient
     public String getImgPost() {
-        if (img == null || id == null) return null;
-        return "/usuario-fotos/post/"+ id + "/" + img;
+        if (checkImagem == true) return "/getImagem/"+id;
+        return null;
     }
 
 	@Override

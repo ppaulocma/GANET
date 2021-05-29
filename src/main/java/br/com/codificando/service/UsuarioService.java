@@ -1,13 +1,15 @@
 package br.com.codificando.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import javax.servlet.http.HttpServletResponse;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import br.com.codificando.UploadFotos;
 import br.com.codificando.model.Usuario;
 import br.com.codificando.repository.UsuarioRepository;
 
@@ -27,11 +29,12 @@ public class UsuarioService {
 			 if(usuario != null) {
 		          String senha = usuario.getSenha();
 		          usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
+		          usuario.setFotoPadrao(true);
+		          usuario.setCapaPadrao(true);
 		          usuarioRepository.save(usuario);
 		          usuario = usuarioRepository.findByLogin(usuario.getLogin());
 		          usuarioRepository.insetRole(usuario.getId());
 		     }
-			 
 	      }catch (Exception e) {
 	            System.out.println("Erro ao salvar: " + e.getMessage());
 	            return "redirect:/login-error";
@@ -39,34 +42,32 @@ public class UsuarioService {
 	      return "redirect:/login";
 	}
 	
-	public void editFoto(MultipartFile multipartFile) throws IOException {
+	public void editFoto(long id, MultipartFile multipartFile){
+		Usuario usuarioLogado  = usuarioLogado();
 		try {
-	         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-	         Usuario usuario = usuarioLogado();
-	         usuario.setFoto_perfil(fileName);
-	         if(fileName != null || fileName != "") {
-	         String uploadDir = "usuario-fotos/foto/" + usuario.getId();          
-	         UploadFotos.saveFile(uploadDir, fileName, multipartFile);
-	         }
-	 		 usuarioRepository.save(usuario);
-	      }catch (Exception e) {
-	         System.out.println("Erro ao salvar: " + e.getMessage());
-	      }
+			if(multipartFile.getOriginalFilename() != "") {
+				System.out.println(multipartFile.getOriginalFilename());
+				usuarioLogado.setFoto_perfil(multipartFile.getBytes());
+				usuarioLogado.setFotoPadrao(false);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		usuarioRepository.save(usuarioLogado);
 	}
 	
-	public void editCapa(MultipartFile multipartFile) throws IOException {
+	public void editCapa(long id , MultipartFile multipartFile){
+		Usuario usuarioLogado  = usuarioLogado();
 		try {
-	         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-	         Usuario usuario = usuarioLogado();
-	         usuario.setFoto_capa(fileName);
-	         if(fileName != null || fileName != "") {
-	         String uploadDir = "usuario-fotos/capa/" +usuario.getId();         
-	         UploadFotos.saveFile(uploadDir, fileName, multipartFile);
-	         }
-	 		 usuarioRepository.save(usuario);
-	      } catch (Exception e) {
-	         System.out.println("Erro ao salvar: " + e.getMessage());
-	      }
+			if(multipartFile.getOriginalFilename() != "") {
+				System.out.println(multipartFile.getOriginalFilename());
+				usuarioLogado.setFoto_capa(multipartFile.getBytes());
+				usuarioLogado.setCapaPadrao(false);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		usuarioRepository.save(usuarioLogado);
 	}
 	
 	public Boolean editSenha(String senhaNova, String senhaAntiga){
@@ -89,5 +90,19 @@ public class UsuarioService {
 		usuarioLogado.setDtNascimento(usuario.getDtNascimento());
 		usuarioRepository.save(usuarioLogado);
 		return "redirect:/perfil/"+usuarioLogado.getLogin();
+	}
+	
+	public void getFoto(long id, HttpServletResponse response)throws IOException {
+		Usuario usuario = usuarioRepository.findById(id);
+		response.setContentType("image/jpeg");
+		InputStream is = new ByteArrayInputStream(usuario.getFoto_perfil());
+		IOUtils.copy(is, response.getOutputStream());
+	}
+	
+	public void getCapa(long id, HttpServletResponse response)throws IOException {
+		Usuario usuario = usuarioRepository.findById(id);
+		response.setContentType("image/jpeg");
+		InputStream is = new ByteArrayInputStream(usuario.getFoto_capa());
+		IOUtils.copy(is, response.getOutputStream());
 	}
 }

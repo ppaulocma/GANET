@@ -118,8 +118,8 @@
             </div>
           </div>
           <div class="textandimg">
-            <span class="imgpostagem" th:if="${post.imgPost != null}">
-              <img id="postusu" th:src="${post.imgPost}">
+            <span class="imgpostagem" th:if="${post.checkImagem}">
+              <img id="postusu" th:src="@{|/getImagem/${post.id}|}">
             </span>
           </div>
           <div class="barra">
