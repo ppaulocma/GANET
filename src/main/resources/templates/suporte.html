@@ -15,17 +15,17 @@
 
 <body>
   <header>
-    <a href="#" class="brand">Ganet</a>
+    <a th:href="@{/}" class="brand">Ganet</a>
     <div class="menu-btn">
       <i id="open" style="display:block;" class="fas fa-bars"></i>
       <i id="close" style="display:none;" class="fas fa-times"></i>
     </div>
     <div class="navigation">
       <div class="navigation-items">
-        <a class="b1" href="#">O que é</a>
-        <a class="b1" href="#">Sobre nós</a>
-        <a class="b1" href="#">Cadastro</a>
-        <a class="logon" href="#">Login</a>
+        <a class="b1" th:href="@{/sobre}">O que é</a>
+         <a class="b1" th:href="@{/suporte}">Suporte</a>
+        <a class="b1" th:href="@{/cadastro}">Cadastro</a>
+        <a class="logon" th:href="@{/login}">Login</a>
       </div>
     </div>
   </header>
@@ -45,6 +45,7 @@
           <option class="option" value="Bugs/Erros">Bugs/Erros</option>
           <option class="option" value="Sugestões">Sugestões</option>
           <option class="option" value="Contato Administrativo">Contato Administrativo</option>
+          <option class="option" value="Outros">Outros</option>
         </select>
         <h4>Espaço para imagens</h4>
         <label class="labelimg" for="imgerro">Enviar</label>

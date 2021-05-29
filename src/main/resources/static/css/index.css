@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+   
 }
 header{
     z-index: 999;
@@ -16,6 +17,7 @@ header{
     padding: 15px 200px;
     transition: 0.5s ease;
     
+    
 }
  header .brand{
     color:#3DD9AD;
@@ -23,6 +25,7 @@ header{
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
+     
 }
 header .navigation{
     position: relative;
@@ -83,6 +86,7 @@ section{
    justify-content: center;
    flex-direction: column;
    background: #151826 ;
+  
 }
 .home::before{
    z-index: 777;
@@ -114,7 +118,7 @@ display: block;
    text-transform: uppercase;
    letter-spacing: 5px;
    line-height: 75px;
-   margin-bottom: 28px;
+   margin-bottom: 2px;
 
 }
 .home .content h1 span{
@@ -122,7 +126,7 @@ display: block;
    font-weight: 600;
 }
 .home .content p{
-   margin-bottom: 65px;
+   margin-bottom: 30px;
 }
 .home .content a{
    background: aliceblue;
@@ -132,6 +136,7 @@ display: block;
    font-size: 1.1em;
    font-weight: 500;
    border-radius: 2px;
+   
 }
 .home .media-icons{
    z-index: 888;
@@ -160,6 +165,8 @@ transform:scale(1.3);
    width: 100%;
    height: 100%;
    object-fit: cover;
+   
+   
 }
 
 

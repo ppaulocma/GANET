@@ -16,6 +16,7 @@
 
   <div class="container d-flex ">
     <div class="row justify-content-center ">
+     <span> <h1>Ganet </h1></span>
       <form th:action="@{/login}" method="POST" onsubmit="return validar(this)"
         class="shadow-lg p-3 sm-5 sm-white rounded  col-lg-6 col-sm-12 col-xl-4">
         <h3>Login</h3>
@@ -35,6 +36,11 @@
       </form>
     </div>
   </div>
+  
+
+  <section>
+    <video class="video" th:src="@{/img/1.mp4}" autoplay muted loop></video>
+  </section>
 
 
 

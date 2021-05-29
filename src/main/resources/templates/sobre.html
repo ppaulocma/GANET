@@ -17,17 +17,17 @@
 </head>
 <body>
     <header>
-        <a href="#" class="brand">Ganet</a>
+        <a th:href="@{/}" class="brand">Ganet</a>
         <div class="menu-btn">
             <i id="open" style="display:block;" class="fas fa-bars"></i>
             <i  id="close"  style="display:none;" class="fas fa-times"></i>
         </div>
          <div class="navigation">
             <div class="navigation-items">
-                <a class="b1" href="#">O que é</a>
-                <a class="b1" href="#">Sobre nós</a>
-                <a class="b1" href="#">Cadastro</a>
-                <a class="logon" href="#">Login</a>
+                <a class="b1" th:href="@{/sobre}">O que é</a>
+                <a class="b1" th:href="@{/suporte}">Suporte</a>
+               <a class="b1" th:href="@{/cadastro}">Cadastro</a>
+               <a class="logon" th:href="@{/login}">Login</a>
             </div>
          </div>
     </header>
@@ -39,7 +39,8 @@
     <h1> O que é o ganet</h1>
     </div>
     <div class="oq">
-    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur sapiente porro magni veritatis adipisci quo a necessitatibus quod, cumque vitae ipsam numquam dicta nesciunt, saepe ipsa tempore voluptatibus qui laboriosam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur sapiente porro magni veritatis adipisci quo a necessitatibus quod, cumque vitae ipsam numquam dicta nesciunt, saepe ipsa tempore voluptatibus qui laboriosam.</p>
+    <p> Somos uma rede social focada na intercomunicação entre as comunidades des jogos tanto de forma indireta, como direta. Sendo assim o Ganet foi criado com esse objetivo. E especialmente desenvolvido por pessoas que entendem esse meio das comunidades de jogos.
+        <br> Você deve está se pergutando como ela funciona ? Pois então, o Ganet é baseado nas grande redes sociais já existentes, sendo assim que os nosso usuários não encontrem dificuldades de acessar a rede e também de utiliza-lá.<br> Esse é o Ganet, então acesse logo e venha se divertir!</p>
     </div>
 </div>
 

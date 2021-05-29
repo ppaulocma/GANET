@@ -20,7 +20,7 @@
     <nav class="navbarT">
         <div class="navcentro">
             <div id="logo" class="a">
-                <i id="i" class="fas fa-dice-d20"></i>Ganet
+                Ganet
             </div>
         </div>
     </nav>
@@ -37,17 +37,22 @@
 
             <div class="miperfil" th:href="@{|perfil/${usuario.login}|}">
                 <div class="logout" id="logout" style="display: none;">
-                    <a th:href="@{/logout}"><button><i class="fas fa-sign-out-alt"></i>Logout</button></a>
+                    <a th:href="@{/logout}"><button><i class="fas fa-sign-out-alt"></i><span> Logout </span></button></a>
                 </div>
                 <div class="mini">
-                    <div class="mini-img">
-                        <img th:src="${usuario.foto}">
+                    <div class="mini-img sumir">
+                        <a th:href="@{|/perfil/${usuario.login}|}"><img th:src="${usuario.foto}"></a>
                     </div>
-                    <div>
+
+                    <div class="mini-img sumir2">
+                        <a onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><img th:src="${usuario.foto}"></a>
+                    </div>
+
+                    <div class="nomes sumir">
                         <span th:text="${usuario.nome}" class="mini-nome"></span>
                         <span th:text="${usuario.login}" class="mini-login"></span>
                     </div>
-                    <button onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><i class="fas fa-ellipsis-h"></i></button>
+                    <button class="sumir" onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><i class="fas fa-ellipsis-h"></i></button>
                 </div>
             </div>
 

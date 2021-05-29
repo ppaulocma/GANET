@@ -3,7 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+  
 }
+body{
+   z-index: 111;
+   background: black;
+}
+
 header{
     z-index: 999;
     position: absolute;
@@ -15,6 +21,7 @@ header{
     align-items: center;
     padding: 15px 200px;
     transition: 0.5s ease;
+   
     
 }
  header .brand{
@@ -23,6 +30,7 @@ header{
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
+ 
 }
 header .navigation{
     position: relative;
@@ -35,7 +43,7 @@ header .navigation{
    text-decoration: none;
    margin-left: 30px;
    transition: 0.3s ease;
-  
+   
 }
 header .navigation .navigation-items .b1::before{
     content:'' ;
@@ -46,6 +54,7 @@ header .navigation .navigation-items .b1::before{
     bottom: 0;
     left: 0;
     transition: 0.3s ease;
+   
     
 }
 header .navigation .navigation-items .b1:hover:before{
@@ -205,6 +214,7 @@ header .navigation .navigation-items .logon::before{
 /* Dá pagina */
 
 .home{ 
+     
         position: relative;
         width: 100%;
         min-height: 100vh;
@@ -226,6 +236,7 @@ header .navigation .navigation-items .logon::before{
     color: #3DD9AD;
     background:transparent    ;
     border-radius: 1%;
+    
 }
  .home .boxb .titulo{
     color:#3DD9AD;
@@ -253,6 +264,8 @@ left: 0;
 width: 100%;
 height: 100%;
 object-fit: cover;
+
+
 }
 
 @media (max-width: 1040px){

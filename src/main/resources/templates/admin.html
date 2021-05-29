@@ -21,13 +21,13 @@
         <div class="left">
             <h1>Administrativo</h1>
             <div class="Acesso">
-                <a>Mensagens</a>
-                <a>Sistema</a>
-                <a>Configurações</a>
+                <a>Reports</a>
+                
+               
             </div>
 
             <div class="logout">
-                <button> Logon <i class="fas fa-sign-out-alt"></i></button>
+              <a th:href="@{/time-line}"><button > Logout <i class="fas fa-sign-out-alt"></i></button></a> 
             </div>
         </div>
         <div class="right">
@@ -53,13 +53,13 @@
 
                     <div class="apparence">
                         <div class="assunto">
-                            <span th:text="${report.assunto}"></span>
+                         <span>Assunto: </span>   <span th:text="${report.assunto}"></span>
                         </div>
                         <div class="email">
-                            <span th:text="${report.email}"></span>
+                            <span>Email: </span>   <span th:text="${report.email}"></span>
                         </div>
                         <div class="data">
-                            <span th:text="${report.data}"></span>
+                            <span>Data: </span>   <span th:text="${report.data}"></span>
                         </div>
                         <div class="seta">
                             <div class="down"> ↓ </div>
@@ -73,8 +73,10 @@
                             <span th:text="${report.texto}" class="text"></span>
 
                             <div class="imagem">
-                                Foto recebida
-                                <img th:src="${report.imgReport}">
+                                <span >
+                                    Foto recebida
+                                    <img th:if="${report.imgReport != null}" th:src="${report.imgReport}">
+                                </span>
                             </div>
                         </div>
                     </div>

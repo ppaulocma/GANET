@@ -1,5 +1,8 @@
-html,
-body {
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
     height: 100%;
 }
 
@@ -217,11 +220,12 @@ html, body {
 }
 
 .navbarT {
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
     background-color: #151826;
     border-bottom: solid 2px black;
-    height: 6%;
+    height: 7%;
 }
 
 .navcentro {
@@ -233,7 +237,7 @@ html, body {
 /* Timeline */
 
 .timeline {
-    height: 94%;
+    height: 93%;
     width: 100%;
     background-color: #151826;
     display: flex;
@@ -244,6 +248,7 @@ html, body {
 .a {
     color: white;
     font-size: 30px;
+    font-weight: 700;
 }
 
 .a i {
@@ -352,12 +357,6 @@ textarea:focus {
     background-color: #2c9b7c62;
 }
 
-.mini div {
-    display: flex;
-    flex-direction: column;
-    margin-left: 15px;
-}
-
 .mini-nome {
     font-weight: bold;
 }
@@ -438,30 +437,59 @@ textarea:focus {
     background: rgba(75, 74, 74, 0.247);
 }
 
-.menu-mobile {
+.nomes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.menu-mobile, .sumir2 {
     display: none;
 }
 
 @media (max-width: 1280px) {
+    .sumir2 {
+        display: flex;
+    }
+
+    #logo{
+        font-size: 22px;
+    }
+
+    .navbarT {
+        height: 5%;
+    }
+
     .tleft {
         width: 90px;
     }
 
     .mini {
         padding: 2%;
+        border: none;
+        width: auto;
     }
 
-    .mini-img {
-        width: 40px;
-        height: 40px;   
+    .mini:hover {
+        background: none;
     }
     
-    .mini > i ,.mini-nome, .mini-login,.sumir {
+    .sumir {
+        display: none;
+    }
+
+    .logout a span{
         display: none;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
+    .tleft {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
     .tleft, .navbarT {
         display: none;
     }
