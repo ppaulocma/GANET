@@ -1,4 +1,3 @@
-const url = 'http://localhost:8080';
 let stompClient;
 let selectedUser;
 let newMessages = new Map();
@@ -182,10 +181,10 @@ function fetchAll() {
         let usersTemplateHTML = "";
         for (let i = 0; i < users.length; i++) {
             let foto;
-            if (users[i].foto_perfil == null) {
+            if (users[i].foto == null) {
                 foto = "usuario-fotos/default.png";
             } else {
-                foto = "usuario-fotos/foto/" + users[i].id +"/"+ users[i].foto_perfil;
+                foto = "usuario-fotos/foto/" + users[i].id +"/"+ users[i].foto;
             }
             usersTemplateHTML = usersTemplateHTML + '<a href="#" onclick="selectUser(\'' + users[i].login + '\',\'' + foto + '\',\'' + users[i].nome + '\')"><div class="tudo">\n' +
                 '                <img src=' + foto + ' width="55px" height="55px" style ="border-radius: 100%;" />\n' +

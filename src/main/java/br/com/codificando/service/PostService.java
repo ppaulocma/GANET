@@ -37,13 +37,11 @@ public class PostService{
 			post.setData(dataFormatada);
 			post.setUsuario(usuario);
 			try {
-				if(multipartFile.getOriginalFilename() != "") {
-					System.out.println(multipartFile.getOriginalFilename());
+				if(multipartFile.getOriginalFilename() != "" || multipartFile.getOriginalFilename() != null) {
 					post.setCheckImagem(true);
 					post.setImagem(multipartFile.getBytes());
 				}else {
 					post.setCheckImagem(false);
-					post.setImagem(null);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -1,4 +1,3 @@
-const url = 'http://localhost:8080';
 let stompClient;
 let selectedUser;
 let newMessages = new Map();
@@ -10,7 +9,7 @@ function connectToChat(userName) {
     let user = userName;
     console.log("connecting to chat...")
     nome();
-    let socket = new SockJS(url + '/chat');
+    let socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         console.log("connected to: " + frame);
@@ -18,7 +17,7 @@ function connectToChat(userName) {
             let data = JSON.parse(response.body);
             if (selectedUser === data.fromLogin) {
                 setTimeout(function() {
-                    $.get(url + "/setStatus/" + userName + "/" + data.fromLogin, function () {})
+                    $.get("/setStatus/" + userName + "/" + data.fromLogin, function () {})
                 } , 1000)
                 render(data.message, data.fromLogin)
             } else {
@@ -65,7 +64,7 @@ function sendMsg(from, text) {
 registration()
 function registration() {
 
-    $.get(url + "/registration", function (response) {
+    $.get("/registration", function (response) {
         username = response;
         connectToChat(username);
     })
@@ -86,9 +85,9 @@ function selectUser(userName, foto, nome) {
     $('.chat-history div').remove();
     $('.chat-history div').empty();
 
-    $.get(url + "/setStatus/" + username + "/" + userName, function () {})
+    $.get("/setStatus/" + username + "/" + userName, function () {})
 
-    $.get(url + "/getMensagens/" + username + "/" + userName, function (mensagem) {
+    $.get("/getMensagens/" + username + "/" + userName, function (mensagem) {
         tamanho = mensagem.length
         var dataAnterior = 0;
         var dataSeguinte = 0;
@@ -176,16 +175,16 @@ function selectUser(userName, foto, nome) {
 
 function fetchAll() {
     let users
-    $.get(url + "/findHistorico", function (response) {
+    $.get("/findHistorico", function (response) {
         users = response;
 
         let usersTemplateHTML = "";
         for (let i = 0; i < users.length; i++) {
             let foto;
-            if (users[i].foto_perfil == null) {
+            if (users[i].foto == null) {
                 foto = "usuario-fotos/default.png";
             } else {
-                foto = "usuario-fotos/foto/" + users[i].id +"/"+ users[i].foto_perfil;
+                foto = "usuario-fotos/foto/" + users[i].id +"/"+ users[i].foto;
             }
             usersTemplateHTML = usersTemplateHTML + '<a href="#" onclick="selectUser(\'' + users[i].login + '\',\'' + foto + '\',\'' + users[i].nome + '\')"><div class="tudo">\n' +
                 '                <img src=' + foto + ' width="55px" height="55px" style ="border-radius: 100%;" />\n' +
@@ -203,7 +202,7 @@ function fetchAll() {
 }
 
 function getStatus(de, para) {
-    $.get(url + "/getStatus/" + de + "/" + para, function (qtdMsg) {
+    $.get("/getStatus/" + de + "/" + para, function (qtdMsg) {
         if (qtdMsg > 0) {
             let isNew = document.getElementById("newMessage_" + de) !== null;
             if (isNew) {

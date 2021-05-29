@@ -59,6 +59,7 @@
         </div>
         <!-- Div 2 -->
         <div class="tmid">
+            <input id="login-usuario" th:value="${usuario.login}" hidden>
             <div id="modal01" class="modal">
                 <div class="modal-content animate-zoom">
 
@@ -184,10 +185,10 @@
                 for (i = 0; i < arr.length; i++) {
                     let foto;
                     var nome = arr[i].login
-                    if (arr[i].foto_perfil == null) {
+                    if (arr[i].foto == null) {
                         foto = "/usuario-fotos/default.png";
                     } else {
-                        foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto_perfil;
+                        foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto;
                     }
                     /*check if the item starts with the same letters as the text field value:*/
                     if (nome.substr(0, val.length).toUpperCase() == val.toUpperCase() && nome != login_usuario) {

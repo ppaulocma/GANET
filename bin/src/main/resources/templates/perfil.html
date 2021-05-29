@@ -338,10 +338,10 @@
         for (i = 0; i < arr.length; i++) {
           let foto;
           var nome = arr[i].login
-          if (arr[i].foto_perfil == null) {
+          if (arr[i].foto == null) {
             foto = "/usuario-fotos/default.png";
           } else {
-            foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto_perfil;
+            foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto;
           }
           /*check if the item starts with the same letters as the text field value:*/
           if (nome.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
@@ -358,7 +358,7 @@
             b.addEventListener("click", function (e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              window.location.href = "http://localhost:8080/perfil/" + inp.value;
+              window.location.href = "/perfil/" + inp.value;
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -428,8 +428,7 @@
     }
 
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-    const url = 'http://localhost:8080';
-    $.get(url + "/todos", function (response) {
+    $.get("/todos", function (response) {
       var users = response
       autocomplete(document.getElementById("myInput"), users);
     });

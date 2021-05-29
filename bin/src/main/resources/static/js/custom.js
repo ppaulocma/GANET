@@ -40,7 +40,7 @@ function render(message, userName) {
 }
 
 function nome() {
-    $.get(url + "/registration", function (response) {
+    $.get("/registration", function (response) {
         username = response;
 
     })
