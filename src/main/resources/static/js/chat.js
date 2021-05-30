@@ -180,12 +180,7 @@ function fetchAll() {
 
         let usersTemplateHTML = "";
         for (let i = 0; i < users.length; i++) {
-            let foto;
-            if (users[i].foto == null) {
-                foto = "usuario-fotos/default.png";
-            } else {
-                foto = "usuario-fotos/foto/" + users[i].id +"/"+ users[i].foto;
-            }
+            let foto = users[i].foto;
             usersTemplateHTML = usersTemplateHTML + '<a href="#" onclick="selectUser(\'' + users[i].login + '\',\'' + foto + '\',\'' + users[i].nome + '\')"><div class="tudo">\n' +
                 '                <img src=' + foto + ' width="55px" height="55px" style ="border-radius: 100%;" />\n' +
                 '                <div class="about">\n' +

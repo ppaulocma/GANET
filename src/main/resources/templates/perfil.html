@@ -43,16 +43,16 @@
         </div>
         <div class="mini">
             <div class="mini-img sumir">
-                <a th:href="@{|/perfil/${usuario.login}|}"><img th:src="${usuario.foto}"></a>
+                <a th:href="@{|/perfil/${usuario_logado.login}|}"><img th:src="${usuario.foto}"></a>
             </div>
 
             <div class="mini-img sumir2">
-                <a onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><img th:src="${usuario.foto}"></a>
+                <a onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><img th:src="${usuario_logado.foto}"></a>
             </div>
 
             <div class="nomes sumir">
-                <span th:text="${usuario.nome}" class="mini-nome"></span>
-                <span th:text="${usuario.login}" class="mini-login"></span>
+                <span th:text="${usuario_logado.nome}" class="mini-nome"></span>
+                <span th:text="${usuario_logado.login}" class="mini-login"></span>
             </div>
             <button class="sumir" onclick="if(document.getElementById('logout').style.display == 'none'){document.getElementById('logout').style.display='block'}else{document.getElementById('logout').style.display='none'}"><i class="fas fa-ellipsis-h"></i></button>
         </div>
@@ -236,8 +236,8 @@
 
 
   <!--RODAPÉ-->
-  <input th:value="${checkSeguidor} hidden" id="check">
-  <input th:value="${checkPerfil} hidden" id="checkPerfil">
+  <input th:value="${checkSeguidor}" hidden id="check">
+  <input th:value="${checkPerfil}" hidden id="checkPerfil">
   <!--JAVASCRIPT-->
   <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
   <script th:src="@{/bootstrap-4.5.2/js/bootstrap.min.js}"></script>
@@ -250,8 +250,8 @@
       var deixar = document.getElementById("a-deixar")
       var check = document.getElementById("check").value
       var checkPerfil = document.getElementById("checkPerfil").value
-      if (checkPerfil == false) {
-        if (check) {
+      if (checkPerfil == "false") {
+        if (check == "true") {
           deixar.setAttribute("style", "diplay: block")
         } else {
 
@@ -339,13 +339,8 @@
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
-          let foto;
+          let foto = arr[i].foto;
           var nome = arr[i].login
-          if (arr[i].foto == null) {
-            foto = "/usuario-fotos/default.png";
-          } else {
-            foto = "/usuario-fotos/foto/" + arr[i].id + "/" + arr[i].foto;
-          }
           /*check if the item starts with the same letters as the text field value:*/
           if (nome.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
             /*create a DIV element for each matching element:*/

@@ -9,7 +9,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.codificando</groupId>
-	<packaging>war</packaging>
 	<artifactId>SA</artifactId>
 	<version>1.0</version>
 	<name>Ganet</name>

@@ -37,7 +37,7 @@ public class PostService{
 			post.setData(dataFormatada);
 			post.setUsuario(usuario);
 			
-				if(multipartFile.getOriginalFilename() != "") {
+				if(!multipartFile.isEmpty()) {
 					try {
 					System.out.println("nome original : "+multipartFile.getOriginalFilename());
 					post.setCheckImagem(true);
