@@ -41,7 +41,8 @@ function sendMsg(from, text) {
         message: text,
         fromLogin: from,
         to: para,
-        
+        data: today,
+        horario: getCurrentTime()
     })
 
     $.ajax({
