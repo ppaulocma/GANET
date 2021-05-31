@@ -37,13 +37,13 @@
       </div>
 
 
-      <div class="miperfil" th:href="@{|perfil/${usuario.login}|}">
+      <div class="miperfil" th:href="@{|perfil/${usuario_logado.login}|}">
         <div class="logout" id="logout" style="display: none;">
             <a th:href="@{/logout}"><button><i class="fas fa-sign-out-alt"></i><span> Logout </span></button></a>
         </div>
         <div class="mini">
             <div class="mini-img sumir">
-                <a th:href="@{|/perfil/${usuario_logado.login}|}"><img th:src="${usuario.foto}"></a>
+                <a th:href="@{|/perfil/${usuario_logado.login}|}"><img th:src="${usuario_logado.foto}"></a>
             </div>
 
             <div class="mini-img sumir2">
