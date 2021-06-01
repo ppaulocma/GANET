@@ -1,4 +1,4 @@
-Situalção de aprendizagem desenvolvida para o curso tecnico de desenvolvimento de sistemas do SENAI/SC
+Situalção de aprendizagem desenvolvida no ultimo semestre do curso tecnico em desenvolvimento de sistemas do SENAI/SC
 
 Back-end e parte do Front Desenvolvido Por min Paulo Cesar.
 
